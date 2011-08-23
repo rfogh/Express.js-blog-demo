@@ -1,0 +1,20 @@
+Update your information
+<form method="put" action="/users">
+    <fieldset>
+        <legend>Type in your information</legend>
+        <input type="hidden" name="id" value="<%= user._id %>"/>
+        <p>
+            <label for="name">Username:</label>
+            <input type="text" name="name" value="<%= user.name %>"/><br/>
+        </p>
+        <p>
+            <label for="email">Email:</label>
+            <input type="text" name="email" value="<%= user.email %>"/><br/>
+        </p>
+        <p>
+            <label for="password">Password:</label>
+            <input type="password" name="password"/><br/>
+        </p>
+        <input type="submit" value="Create"/>
+    </fieldset>
+</form>

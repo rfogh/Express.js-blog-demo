@@ -1,0 +1,52 @@
+<div class="blog">
+    <h2>
+        <%= blog.title %>
+    </h2>
+    <p class="author">
+        by <%= blog.author %>
+    </p>
+    <p class="date">
+        <%= blog.date.toLocaleDateString() %>
+    </p>
+    <p class="body">
+        <%- blog.body %>
+    </p>
+    <% if (session.isAdmin) { %>
+    <p class="admin">
+        admin buttons to edit/delete
+    </p>
+    <% } %>
+</div>
+
+
+<% if (typeof(blog.comments) != 'undefined' && blog.comments.length > 0) {
+    for (var i = 0; i < blog.comments.length; i++) {
+        var comment = blog.comments[i]; %>
+<div class="comment">
+    <p class="author">
+        <%= comment.user %>
+    </p>
+    <p class="date">
+        <%= comment.date.toLocaleDateString() %>
+    </p>
+    <p class="body">
+        <%= comment.body %>
+    </p>
+</div>
+<%  }
+} %>
+
+
+<% if (typeof(session) != 'undefined' && session.loggedIn) { %>
+<div class="comment">
+    <form method="post" action="/<%= blog._id %>">
+        <fieldset>
+            <legend>Write a comment</legend>
+            <p>
+                <textarea name="body"></textarea>
+            </p>
+            <input type="submit" value="post"/>
+        </fieldset>
+    </form>
+</div>
+<% } %>

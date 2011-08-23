@@ -1,0 +1,144 @@
+html {
+    background-image: url(http://i2.sitepoint.com/examples/primes/29-a.png),
+                      url(http://i2.sitepoint.com/examples/primes/37-a.png),
+                      url(http://i2.sitepoint.com/examples/primes/53-a.png);
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background-color: silver;
+}
+
+body {
+    width: 50em;
+    margin: auto;
+    font-size: 11pt;
+    font-family: sans-serif;
+}
+
+div {
+    background-color: white;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 3px 3px 4px black;
+}
+
+.login {
+    position: fixed;
+    top: 0;
+    right: 1em;
+    margin-top: 0;
+    font-size: 9pt;
+    text-align: center;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    padding: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    z-index: 1;
+}
+
+.header {
+    text-align: right;
+    padding-right: 3em;
+}
+
+.blog {
+    background-color: #E0F0E9;
+    position: relative;
+}
+
+.comment {
+    background-color: #E9E0F0;
+    position: relative;
+}
+
+.author {
+    position: absolute;
+    color: gray;
+    font-size: 9pt;
+}
+
+.blog .author {
+    top: 3.5em;
+}
+
+.comment .author {
+    top: -0.5em;
+}
+
+.date {
+    position: absolute;
+    width: 100%;
+    left: 40em;
+    color: gray;
+    font-size: 9pt;
+}
+
+.blog .date {
+    top: 3.5em;
+}
+
+.comment .date {
+    top: -0.5em;
+}
+
+.comments {
+    font-size: 9pt;
+}
+
+.body, .body p {
+    text-align: justify;
+}
+
+table {
+    margin: 2em;
+}
+
+td {
+    padding: 0.5em 2em 0.5em 2em;
+}
+
+.odd {
+    background-color: #F3F3F3;
+}
+
+.even {
+    background-color: #F9F9F9;
+}
+
+fieldset {
+    border: 2px solid gray;
+    border-radius: 10px;
+    margin: 2em;
+}
+
+legend {
+    color: gray;
+    font-size: 10pt;
+    font-weight: bold;
+    padding: 0.5em;
+}
+
+label {
+    width: 25%;
+    text-align: right;
+}
+
+input[type=text], input[type=password] {
+    width: 70%;
+    float: right;
+}
+
+input[type=submit] {
+    width: 15em;
+    float: right;
+}
+
+textarea {
+    width: 100%;
+}
+
+
+
+

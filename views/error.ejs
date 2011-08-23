@@ -1,0 +1,11 @@
+There has been an error with your request:
+<p>
+    <%= err.message %>
+</p>
+<% if (typeof(err.errors) != 'undefined') { %>
+    <ul>
+    <% for (var key in err.errors) { %>
+        <li><%= err.errors[key] %></li>
+    <% } %>
+    </ul>
+<% } %>
