@@ -1,5 +1,7 @@
-var model = require('../model'),
+var async = require('async'),
+    model = require('../model'),
     error = require('./error'),
+    User = model.User,
     BlogPost = model.BlogPost,
     Comment = model.Comment;
     
@@ -7,11 +9,27 @@ var model = require('../model'),
 exports.show = function(req, res) {
     BlogPost.find({}, function(err, posts) {
         error.check(err, function(req, res) {
-            res.render('blog/show.ejs', {
-                title: 'How to node',
-                posts: posts
+            async.map(posts, getAuthor, function (err, users) {
+                res.render('blog/show.ejs', {
+                    title: 'How to node',
+                    posts: posts,
+                    authors: users
+                });
             });
         })(req, res);
+    });
+};
+
+
+function getAuthor(post, callback) {
+    User.findById(post.author, function (err, user) {
+        callback(null, user); //eat any error
+    });
+};
+
+function getUsers(comment, callback) {
+    User.findById(comment.user, function (err, user) {
+        callback(null, user); //eat any error
     });
 };
 
@@ -19,9 +37,15 @@ exports.show = function(req, res) {
 exports.read = function(req, res) {
     BlogPost.findOne({_id: req.params.id}, function(err, post) {
         error.check(err, function(req, res) {
-            res.render('blog/read.ejs', {
-                title: post.title,
-                blog: post
+            getAuthor(post, function (err, user) {
+                async.map(post.comments, getUsers, function(err, users) {
+                    res.render('blog/read.ejs', {
+                        title: post.title,
+                        blog: post,
+                        author: user,
+                        users: users
+                    });
+                });
             });
         })(req, res);
     });

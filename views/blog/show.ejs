@@ -4,7 +4,7 @@
             <a href="/<%= posts[post]._id%>"><%= posts[post].title %></a>
         </h2>
         <p class="author">
-            by <%= posts[post].author %>
+            by <%= authors[post].name %>
         </p>
         <p class="date">
             <%= posts[post].date.toLocaleDateString() %>
@@ -15,10 +15,5 @@
         <p class="comments">
             <a href="/<%= posts[post]._id %>">Read the <%= posts[post].comments.length %> comments and write your own</a>
         </p>
-        <% if (typeof(session) != 'undefined' && session.isAdmin) { %>
-        <p class="admin">
-            admin buttons to edit/delete
-        </p>
-        <% } %>
     </div>
 <% } %>

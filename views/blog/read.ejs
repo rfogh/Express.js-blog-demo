@@ -3,7 +3,7 @@
         <%= blog.title %>
     </h2>
     <p class="author">
-        by <%= blog.author %>
+        by <%= author.name %>
     </p>
     <p class="date">
         <%= blog.date.toLocaleDateString() %>
@@ -13,7 +13,7 @@
     </p>
     <% if (session.isAdmin) { %>
     <p class="admin">
-        admin buttons to edit/delete
+        &lt;admin buttons to edit/delete&gt;
     </p>
     <% } %>
 </div>
@@ -24,7 +24,7 @@
         var comment = blog.comments[i]; %>
 <div class="comment">
     <p class="author">
-        <%= comment.user %>
+        <%= users[i].name %>
     </p>
     <p class="date">
         <%= comment.date.toLocaleDateString() %>

@@ -1,13 +1,14 @@
 var express = require('express'),
-    userController = require('./controllers/user'),
+    userController = require('./controllers/user')(),
     loginController = require('./controllers/login'),
-    blogController = require('./controllers/blog');
+    blogController = require('./controllers/blog'),
+    testRunner = require('./tests/testrunner');
 
 var app = express.createServer();
 
 app.configure(function() {
-    app.use(express.bodyParser());
-    app.use(express.static(__dirname + '/public'));
+    app.use(express.bodyParser()); //Parses body of POST requests
+    app.use(express.static(__dirname + '/public')); //Static files goes here
     app.use(express.cookieParser());
     app.use(express.session({ secret: "S0m3th1ng v3ry s3cr37" }));
     app.dynamicHelpers({
@@ -17,6 +18,8 @@ app.configure(function() {
     });
 });
 
+
+app.get('/test', testRunner.run);
 
 app.get('/login', loginController.show);
 app.post('/login', loginController.login);

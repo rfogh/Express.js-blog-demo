@@ -4,32 +4,32 @@ var mongoose = require('mongoose'),
     validate = require('./validation');
 
 
-var User = new Schema({
+var UserSchema = new Schema({
     name: { type: String, required: true, unique: true, validate: [validate.name, 'name'] },
     email: { type: String, required: true, validate: [validate.email, 'email'] },
     password: { type: String, required: true },
     admin: Boolean
 });
-mongoose.model('User', User);
+mongoose.model('User', UserSchema);
 exports.User = mongoose.model('User');
 
 
-var Comment = new Schema({
+var CommentSchema = new Schema({
     body: String,
     date: Date,
     user: ObjectId
 });
 
-var BlogPost = new Schema({
+var BlogPostSchema = new Schema({
     author: ObjectId,
     title: String,
     body: String,
     date: Date,
-    comments: [Comment]
+    comments: [CommentSchema]
 });
-mongoose.model('BlogPost', BlogPost);
+mongoose.model('BlogPost', BlogPostSchema);
 exports.BlogPost = mongoose.model('BlogPost');
-    
-    
+
+
 mongoose.connect('mongodb://express:tryout@staff.mongohq.com:10017/expresstryout');
 
